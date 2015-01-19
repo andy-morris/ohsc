@@ -48,7 +48,9 @@ public class OHSC: Window {
         this.reload_button = new ToolButton.from_stock(Stock.REFRESH);
         this.login_button =
             new ToolButton.from_stock(Stock.DIALOG_AUTHENTICATION);
-        this.register_button = new ToggleToolButton.from_stock(Stock.ADD);
+        login_button.label = "Log in";
+        this.register_button = new ToggleToolButton.from_stock(Stock.NEW);
+        register_button.label = "Register";
         toolbar.add(this.back_button);
         toolbar.add(this.forward_button);
         toolbar.add(this.reload_button);
