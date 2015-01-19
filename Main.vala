@@ -57,11 +57,17 @@ public class OHSC: Window {
         toolbar.add(new SeparatorToolItem());
         toolbar.add(this.login_button);
         toolbar.add(this.register_button);
+
         this.url_bar = new Entry();
+
         this.web_view = new WebView();
+        // for inspector
+        this.web_view.settings.enable_developer_extras = true;
+
         var scrolled_window = new ScrolledWindow(null, null);
         scrolled_window.set_policy(PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
         scrolled_window.add(this.web_view);
+
         var vbox = new VBox(false, 0);
         vbox.pack_start(toolbar, false, true, 0);
         vbox.pack_start(this.url_bar, false, true, 0);
@@ -85,6 +91,17 @@ public class OHSC: Window {
 
         this.register_button.clicked.connect(this.toggle_register);
         this.login_button.clicked.connect(this.do_login);
+
+        this.web_view.web_inspector.inspect_web_view.connect((_i, _v) => {
+            var win = new Window();
+            var scr = new ScrolledWindow(null, null);
+            WebView *view = new WebView();
+            scr.add(view);
+            scr.set_policy(PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
+            win.add(scr);
+            win.show();
+            return view;
+        });
     }
 
     private void update_buttons() {
