@@ -320,7 +320,7 @@ public class OHSC: Window {
     make_request_async(Json.Object data, string host, uint16 port)
     throws Error {
         var client = new SocketClient();
-        client.tls = true;
+        client.tls = false;
         var js = new Json.Node.alloc().init_object(data);
         var g = new Json.Generator();
         g.set_root(js);
