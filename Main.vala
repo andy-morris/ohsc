@@ -99,7 +99,7 @@ public class OHSC: Window {
             scr.add(view);
             scr.set_policy(PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
             win.add(scr);
-            win.show();
+            win.show_all();
             return view;
         });
     }
