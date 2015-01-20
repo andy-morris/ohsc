@@ -344,8 +344,10 @@ public class OHSC: Window {
     }
 
     public void start() {
+        get_cookie_jar().accept_policy = CookieJarAcceptPolicy.ALWAYS;
+
+
         show_all();
-        this.web_view.settings.user_agent = OHSC.USER_AGENT;
         this.web_view.open(OHSC.HOME_URL);
     }
 
