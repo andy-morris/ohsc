@@ -345,6 +345,8 @@ public class OHSC: Window {
 
     public void start() {
         get_cookie_jar().accept_policy = CookieJarAcceptPolicy.ALWAYS;
+        var session = WebKit.get_default_session();
+        session.ssl_use_system_ca_file = true; // THIS IS NOT THE DEFAULT!!!
 
 
         show_all();
