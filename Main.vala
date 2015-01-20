@@ -123,6 +123,11 @@ public class OHSC: Window {
             deactivate_register(reg);
         }
     }
+
+	private string user_agent {
+		get { return this.web_view.settings.get_user_agent(); }
+	}
+
     private static void activate_register(RegisterData reg) {
         // frames?
         reg.doc.add_event_listener("click", (GLib.Callback)handle_register,
@@ -244,7 +249,7 @@ public class OHSC: Window {
         login.set_string_member("tag", "Login");
         login.set_string_member("loginUserId", USER);
         login.set_string_member("loginURL", this.web_view.uri);
-        login.set_string_member("loginUserAgent", USER_AGENT);
+        login.set_string_member("loginUserAgent", this.user_agent);
 
         make_request_async.begin(login, host, port, (obj, res) => {
             Json.Object resp = null;
