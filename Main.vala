@@ -303,9 +303,16 @@ public class OHSC: Window {
 
         var jar = get_cookie_jar();
 
-        var uri = new URI(this.web_view.uri);
         for (uint i = 0; i < cookies.get_length(); ++i) {
-            jar.set_cookie(uri, cookies.get_string_element(i));
+            var ch = cookies.get_string_element(i);
+            var c = Cookie.parse(ch, null);
+
+            if(c == null) {
+                print("Cannot parse cookie: " + ch + "\n");
+            } else {
+                print("Cookie : " + c.domain + "\n");
+                jar.add_cookie(c);
+            }
         }
 
         if (redirect != null) {
