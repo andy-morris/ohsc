@@ -5,10 +5,9 @@ using Soup;
 public class OHSC: Window {
 
     private const string TITLE = "OHSC";
-    private const string HOME_URL = "http://google.com";
-    private const string DEFAULT_PROTOCOL = "http";
-    private const string USER_AGENT = "OHSC";
-    private const string USER = "test";
+    private const string HOME_URL = "https://google.at";
+    private const string DEFAULT_PROTOCOL = "https";
+    private const string USER = "smith@darkboxed.org";
 
     private string host;
     private uint16 port;
@@ -124,9 +123,9 @@ public class OHSC: Window {
         }
     }
 
-	private string user_agent {
-		get { return this.web_view.settings.get_user_agent(); }
-	}
+    private string user_agent {
+        get { return this.web_view.settings.get_user_agent(); }
+    }
 
     private static void activate_register(RegisterData reg) {
         // frames?
