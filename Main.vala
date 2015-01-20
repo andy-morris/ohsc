@@ -305,7 +305,7 @@ public class OHSC: Window {
 
         for (uint i = 0; i < cookies.get_length(); ++i) {
             var ch = cookies.get_string_element(i);
-            var c = Cookie.parse(ch, null);
+            var c = Cookie.parse(ch, null); // null is fine see C docs for soup
 
             if(c == null) {
                 print("Cannot parse cookie: " + ch + "\n");
