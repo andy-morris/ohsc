@@ -304,8 +304,19 @@ public class OHSC: Window {
         var jar = get_cookie_jar();
 
         for (uint i = 0; i < cookies.get_length(); ++i) {
-            var ch = cookies.get_string_element(i);
-            var c = Cookie.parse(ch, null); // null is fine see C docs for soup
+            var ct = cookies.get_array_element(i);
+
+            var cd = ct.get_string_element(0);
+            var ch = ct.get_string_element(1);
+
+            URI uri = null;
+            if(cd != null) {
+                uri = new URI(null);
+                uri.set_host(cd);
+                uri.set_path("/");
+            }
+
+            var c = Cookie.parse(ch, uri); // null is fine see C docs for soup
 
             if(c == null) {
                 print("Cannot parse cookie: " + ch + "\n");
